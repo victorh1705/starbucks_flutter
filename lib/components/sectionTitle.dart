@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starbucks_flutter/utils/color+ext.dart';
 
 class SectionTitle extends StatelessWidget {
   final String title;
@@ -13,7 +14,7 @@ class SectionTitle extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        color: Color(0xff00613a),
+        color: CustomColors.greenDefault(),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),

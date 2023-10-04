@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-extension on Color {
+class CustomColors {
   static Color greenDefault() {
     return const Color(0xff00613a);
   }
