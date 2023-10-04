@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:starbucks_flutter/screens/allDone.dart';
+import 'package:starbucks_flutter/screens/login.dart';
 import 'package:starbucks_flutter/screens/singIn.dart';
 
 void main() {
@@ -48,10 +49,11 @@ class MyApp extends StatelessWidget {
         ),
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      initialRoute: SingIn.route,
+      initialRoute: Login.route,
       routes: {
         SingIn.route: (context) => const SingIn(),
         AllDone.route: (context) => const AllDone(),
+        Login.route: (context) => const Login(),
       },
     );
   }

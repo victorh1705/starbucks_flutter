@@ -18,8 +18,8 @@ class SingIn extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _Pagination(),
-              _Header(),
+              const _Pagination(),
+              const _Header(),
               _LoginForm(),
               _CardNumberForm(),
             ],
@@ -203,7 +203,7 @@ class _CardNumberFormState extends State<_CardNumberForm> {
               icon: Icon(
                   isPasswordVisible ? Icons.visibility : Icons.visibility_off),
             ),
-            border: UnderlineInputBorder(),
+            border: const UnderlineInputBorder(),
             labelText: 'Security Code',
             helperText:
                 "Scratch off the hidden portion at the back of your card",
