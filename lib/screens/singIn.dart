@@ -17,7 +17,7 @@ class SingIn extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 30.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            children: [
               _Pagination(),
               _Header(),
               _LoginForm(),
@@ -99,10 +99,17 @@ class _Header extends StatelessWidget {
   }
 }
 
-class _LoginForm extends StatelessWidget {
+class _LoginForm extends StatefulWidget {
   const _LoginForm({
     super.key,
   });
+
+  @override
+  State<_LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<_LoginForm> {
+  bool isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -117,38 +124,38 @@ class _LoginForm extends StatelessWidget {
           decoration: const InputDecoration(
             border: UnderlineInputBorder(),
             labelText: 'Email',
-            labelStyle: TextStyle(
-              color: Colors.black,
-            ),
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.black),
-            ),
           ),
         ),
         TextFormField(
-          obscureText: true,
-          decoration: const InputDecoration(
-            border: UnderlineInputBorder(),
+          obscureText: isPasswordVisible,
+          decoration: InputDecoration(
+            suffixIcon: IconButton(
+              onPressed: () {
+                setState(() {
+                  isPasswordVisible = !isPasswordVisible;
+                });
+              },
+              icon: Icon(
+                  isPasswordVisible ? Icons.visibility : Icons.visibility_off),
+            ),
+            border: const UnderlineInputBorder(),
             labelText: 'Password',
-            labelStyle: TextStyle(
-              color: Colors.black,
-            ),
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.black),
-            ),
           ),
         ),
         TextFormField(
-          obscureText: true,
-          decoration: const InputDecoration(
-            border: UnderlineInputBorder(),
+          obscureText: isPasswordVisible,
+          decoration: InputDecoration(
+            suffixIcon: IconButton(
+              onPressed: () {
+                setState(() {
+                  isPasswordVisible = !isPasswordVisible;
+                });
+              },
+              icon: Icon(
+                  isPasswordVisible ? Icons.visibility : Icons.visibility_off),
+            ),
+            border: const UnderlineInputBorder(),
             labelText: 'Confirm password',
-            labelStyle: TextStyle(
-              color: Colors.black,
-            ),
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.black),
-            ),
           ),
         ),
       ],
@@ -156,10 +163,17 @@ class _LoginForm extends StatelessWidget {
   }
 }
 
-class _CardNumberForm extends StatelessWidget {
+class _CardNumberForm extends StatefulWidget {
   const _CardNumberForm({
     super.key,
   });
+
+  @override
+  State<_CardNumberForm> createState() => _CardNumberFormState();
+}
+
+class _CardNumberFormState extends State<_CardNumberForm> {
+  bool isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -174,26 +188,23 @@ class _CardNumberForm extends StatelessWidget {
           decoration: const InputDecoration(
             border: UnderlineInputBorder(),
             labelText: 'Card Number',
-            labelStyle: TextStyle(
-              color: Colors.black,
-            ),
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.black),
-            ),
             helperText: "No spaces or dashes",
           ),
         ),
         TextFormField(
           obscureText: true,
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
+            suffixIcon: IconButton(
+              onPressed: () {
+                setState(() {
+                  isPasswordVisible = !isPasswordVisible;
+                });
+              },
+              icon: Icon(
+                  isPasswordVisible ? Icons.visibility : Icons.visibility_off),
+            ),
             border: UnderlineInputBorder(),
             labelText: 'Security Code',
-            labelStyle: TextStyle(
-              color: Colors.black,
-            ),
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.black),
-            ),
             helperText:
                 "Scratch off the hidden portion at the back of your card",
           ),

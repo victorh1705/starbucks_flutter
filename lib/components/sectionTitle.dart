@@ -14,7 +14,8 @@ class SectionTitle extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        color: CustomColors.greenDefault(),
+        // color: CustomColors.greenDefault(),
+        color: Theme.of(context).primaryColor,
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
