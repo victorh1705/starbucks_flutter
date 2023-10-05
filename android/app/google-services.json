@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "374363974538",
+    "project_id": "starbucks-flutter",
+    "storage_bucket": "starbucks-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374363974538:android:c8bdf3f47e04d1c0d73673",
+        "android_client_info": {
+          "package_name": "com.example.starbucks_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIn52oJ2i2LjV1bogMJcnT9mo-DIYwqNk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
