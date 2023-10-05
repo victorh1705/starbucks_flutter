@@ -1,10 +1,26 @@
 import 'package:flutter/material.dart';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
+import 'package:starbucks_flutter/providers/providers.dart';
+import 'firebase_options.dart';
+
 import 'package:starbucks_flutter/screens/allDone.dart';
-import 'package:starbucks_flutter/screens/login.dart';
+import 'package:starbucks_flutter/screens/login_page/page/login_page.dart';
 import 'package:starbucks_flutter/screens/singIn.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  runApp(
+    MultiProvider(
+      providers: AppProvider.provider,
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -49,11 +65,11 @@ class MyApp extends StatelessWidget {
         ),
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      initialRoute: Login.route,
+      initialRoute: LoginPage.route,
       routes: {
         SingIn.route: (context) => const SingIn(),
         AllDone.route: (context) => const AllDone(),
-        Login.route: (context) => const Login(),
+        LoginPage.route: (context) => const LoginPage(),
       },
     );
   }
