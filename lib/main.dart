@@ -1,15 +1,22 @@
-import 'package:flutter/material.dart';
-
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:starbucks_flutter/providers/providers.dart';
+import 'package:starbucks_flutter/screens/all_done/all_done.dart';
+import 'package:starbucks_flutter/screens/home%20_page.dart/controller/home_page_controller.dart';
+import 'package:starbucks_flutter/screens/home%20_page.dart/page/home_page.dart';
+import 'package:starbucks_flutter/screens/login_page/controller/login_page_controller.dart';
+import 'package:starbucks_flutter/screens/login_page/page/login_page.dart';
+import 'package:starbucks_flutter/screens/sign_up/pages/sign_up_pages.dart';
+import 'package:starbucks_flutter/shared/services/auth_service.dart';
+import 'package:starbucks_flutter/shared/services/auth_service_firebase.dart';
+import 'package:starbucks_flutter/utils/custom_theme.dart';
+
 import 'firebase_options.dart';
 
-import 'package:starbucks_flutter/screens/allDone.dart';
-import 'package:starbucks_flutter/screens/login_page/page/login_page.dart';
-import 'package:starbucks_flutter/screens/singIn.dart';
-
 void main() async {
+  final AuthService authService = AuthServiceFirebase();
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -18,74 +25,53 @@ void main() async {
   runApp(
     MultiProvider(
       providers: AppProvider.provider,
-      child: const MyApp(),
+      child: MyApp(
+        authService: authService,
+      ),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final AuthService authService;
+
+  const MyApp({super.key, required this.authService});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    MaterialColor getMaterialColor(Color color) {
-      final int red = color.red;
-      final int green = color.green;
-      final int blue = color.blue;
+    final LoginPageController loginPageController =
+        Provider.of<LoginPageController>(context);
 
-      final Map<int, Color> shades = {
-        50: Color.fromRGBO(red, green, blue, .1),
-        100: Color.fromRGBO(red, green, blue, .2),
-        200: Color.fromRGBO(red, green, blue, .3),
-        300: Color.fromRGBO(red, green, blue, .4),
-        400: Color.fromRGBO(red, green, blue, .5),
-        500: Color.fromRGBO(red, green, blue, .6),
-        600: Color.fromRGBO(red, green, blue, .7),
-        700: Color.fromRGBO(red, green, blue, .8),
-        800: Color.fromRGBO(red, green, blue, .9),
-        900: Color.fromRGBO(red, green, blue, 1),
-      };
-
-      return MaterialColor(color.value, shades);
-    }
+    final HomePageController homePageController =
+        Provider.of<HomePageController>(context);
 
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: getMaterialColor(Colors.green[900]!),
-        inputDecorationTheme: const InputDecorationTheme(
-          contentPadding: EdgeInsets.all(16.0),
-          labelStyle: TextStyle(
-            color: Colors.black,
-          ),
-          focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.black),
-          ),
-        ),
+      theme: CustomTheme.getTheme(),
+      home: StreamBuilder(
+        stream: authService.onAuthStateChanged,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.active &&
+              snapshot.hasData) {
+            return HomePage(
+              controller: homePageController,
+            );
+          } else {
+            return LoginPage(
+              controller: loginPageController,
+            );
+          }
+        },
       ),
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      initialRoute: LoginPage.route,
+      // initialRoute: LoginPage.route,
       routes: {
-        SingIn.route: (context) => const SingIn(),
+        SignUpPages.route: (context) => const SignUpPages(),
         AllDone.route: (context) => const AllDone(),
-        LoginPage.route: (context) => const LoginPage(),
+        LoginPage.route: (context) =>
+            LoginPage(controller: loginPageController),
+        HomePage.route: (context) => HomePage(controller: homePageController),
       },
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingIn(),
-      ),
     );
   }
 }

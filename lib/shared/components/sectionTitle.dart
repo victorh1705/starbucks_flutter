@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:starbucks_flutter/utils/color+ext.dart';
 
 class SectionTitle extends StatelessWidget {
   final String title;
