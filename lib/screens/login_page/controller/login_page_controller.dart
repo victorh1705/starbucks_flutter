@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:starbucks_flutter/shared/services/auth_service.dart';
 
 class LoginPageController extends ChangeNotifier {
   final TextEditingController emailController = TextEditingController();
@@ -6,9 +8,28 @@ class LoginPageController extends ChangeNotifier {
 
   bool keepMeLoggedIn = false;
 
-  void login() {
-    print(
-        'email: ${emailController.text} \t password: ${passwordController.text}');
+  AuthService<User> authService;
+
+  LoginPageController(
+    this.authService,
+  ) {}
+
+  void login() async {
+    await authService.signIn(
+      emailController.text,
+      passwordController.text,
+    );
+  }
+
+  void logout() async {
+    await authService.signOut();
+  }
+
+  void createUser() async {
+    await authService.createUser(
+      emailController.text,
+      passwordController.text,
+    );
   }
 
   void toggleKeepMeLoggedIn() {
@@ -25,6 +46,7 @@ class LoginPageController extends ChangeNotifier {
   }
 
   void goToSignUp() {
-    print('go to sign up');
+    // Navigator.pushNamed(context, '/sign-up');
+    print("object");
   }
 }

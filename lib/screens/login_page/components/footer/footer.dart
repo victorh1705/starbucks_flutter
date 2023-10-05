@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:starbucks_flutter/screens/login_page/components/footer/login_with_facebook_button.dart';
 import 'package:starbucks_flutter/screens/login_page/components/footer/login_with_google_button.dart';
-import 'package:starbucks_flutter/screens/login_page/components/footer/sing_up_button.dart';
+import 'package:starbucks_flutter/screens/login_page/components/footer/sign_up_button.dart';
 import 'package:starbucks_flutter/screens/login_page/controller/login_page_controller.dart';
 
 class Footer extends StatelessWidget {

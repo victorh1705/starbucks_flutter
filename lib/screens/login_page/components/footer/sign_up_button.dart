@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:starbucks_flutter/screens/login_page/controller/login_page_controller.dart';
+import 'package:starbucks_flutter/screens/sign_up/pages/sign_up_pages.dart';
 
 class SignUpButton extends StatelessWidget {
   final LoginPageController controller;
@@ -26,7 +27,7 @@ class SignUpButton extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            controller.goToSignUp();
+            Navigator.pushNamed(context, SignUpPages.route);
           },
           child: Text(
             "Sign Up",
