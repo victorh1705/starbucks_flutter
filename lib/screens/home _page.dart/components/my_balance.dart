@@ -15,7 +15,7 @@ class MyBalance extends StatelessWidget {
       height: 90,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Color(0xfff0f0f3),
+        color: Colors.grey[200],
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -28,7 +28,7 @@ class MyBalance extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
-                  color: Colors.grey,
+                  color: Colors.grey[800],
                 ),
               ),
               SizedBox(height: 10),
@@ -58,7 +58,7 @@ class MyBalance extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
-                  color: Colors.grey,
+                  color: Colors.grey[800],
                 ),
               ),
               SizedBox(height: 10),
