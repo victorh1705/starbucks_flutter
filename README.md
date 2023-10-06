@@ -4,13 +4,28 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Techs and achievements
 
-A few resources to get you started if this is your first Flutter project:
+- firebase connections
+- state management with Provider
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Screens 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Login (functional for email e password)
+- Sign Up (create User)
+- Home (with some widgets and logout button)
+
+<img
+    src=".img/screen01.png"
+    width="350px"
+/>
+
+<img
+    src=".img/screen02.png"
+    width="350px"
+/>
+
+<img
+    src=".img/screen03.png"
+    width="350px"
+/>
